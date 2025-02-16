@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-
+    <!-- TODO: use tools:srcCompat to see your preview better -->
     <ImageView
         android:id="@+id/albumCoverDetail"
         android:layout_width="379dp"
@@ -38,6 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
 
+    <!-- TODO: don't use android:text for preview, use tools:text. otherwise you will see this hardcoded text for a while (your screen in quick for now, but in future you will have more complicated screens) -->
     <TextView
         android:id="@+id/albumGenreDetail"
         android:layout_width="0dp"
@@ -72,6 +73,7 @@
         android:layout_marginTop="8dp"
         android:text="Copyright"/>
 
+    <!-- TODO: use string resources -->
     <Button
         android:id="@+id/btnItunes"
         android:layout_width="wrap_content"

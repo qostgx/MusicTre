@@ -15,6 +15,8 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
+    // TODO: don't use lateinit in your code, better use 'by lazy' delegate
+    // TODO: https://developer.android.com/topic/libraries/view-binding
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

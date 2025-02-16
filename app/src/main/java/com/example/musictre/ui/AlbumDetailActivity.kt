@@ -1,3 +1,4 @@
+// TODO: package name warning
 package com.example.musictre
 
 import android.content.Intent
@@ -8,6 +9,9 @@ import coil.load
 import com.example.musictre.databinding.ActivityAlbumDetailBinding
 import com.example.musictre.model.Album
 
+// TODO: press autoformat
+//  https://stackoverflow.com/questions/16580171/code-formatting-shortcuts-in-android-studio-for-operation-systems
+//  https://www.youtube.com/watch?v=HLQUtLbjW98
 class AlbumDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAlbumDetailBinding

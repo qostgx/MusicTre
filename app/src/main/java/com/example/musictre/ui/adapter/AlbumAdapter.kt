@@ -7,6 +7,9 @@ import coil.load
 import com.example.musictre.databinding.ItemAlbumBinding
 import com.example.musictre.model.Album
 
+// TODO: use ListAdapter instead of RecyclerView.Adapter
+//   https://medium.com/geekculture/android-listadapter-a-better-implementation-for-the-recyclerview-1af1826a7d21
+//   https://www.thedroidsonroids.com/blog/difference-between-listview-recyclerview
 class AlbumAdapter(
     private val albums: List<Album>,
     private val onItemClick: (Album) -> Unit

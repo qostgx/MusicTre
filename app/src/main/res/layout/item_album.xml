@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
 
+        <!-- TODO: use tools:scrCompat -->
         <ImageView
             android:id="@+id/albumCover"
             android:layout_width="0dp"
@@ -22,7 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-
+        <!-- TODO: use tools:text -->
         <TextView
             android:id="@+id/albumTitle"
             android:layout_width="0dp"

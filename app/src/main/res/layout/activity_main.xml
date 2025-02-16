@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- TODO: wrong constraints, your toolbar overlaps your list -->
+    <!-- https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.youtube.com/watch%3Fv%3DrzmB3UxxhaA&ved=2ahUKEwigitrdn8iLAxXoUlUIHc8DCtcQwqsBegQIDRAG&usg=AOvVaw2Na2sa53fGi3BxfEWufwDd -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/albumRecyclerView"
         android:layout_width="0dp"
