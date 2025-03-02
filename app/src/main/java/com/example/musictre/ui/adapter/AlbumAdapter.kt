@@ -2,40 +2,41 @@ package com.example.musictre.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 import coil.load
 import com.example.musictre.databinding.ItemAlbumBinding
 import com.example.musictre.model.Album
 
-// TODO: use ListAdapter instead of RecyclerView.Adapter
-//   https://medium.com/geekculture/android-listadapter-a-better-implementation-for-the-recyclerview-1af1826a7d21
-//   https://www.thedroidsonroids.com/blog/difference-between-listview-recyclerview
 class AlbumAdapter(
-    private val albums: List<Album>,
     private val onItemClick: (Album) -> Unit
-) : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
+) : ListAdapter<Album, AlbumAdapter.AlbumViewHolder>(AlbumDiffCallback()) {
 
     inner class AlbumViewHolder(private val binding: ItemAlbumBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+        androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root) {
         fun bind(album: Album) {
             binding.albumTitle.text = album.name
             binding.albumArtist.text = album.artistName
-            binding.albumCover.load(album.artworkUrl100) {
+            val fullHdImageUrl = album.artworkUrl100.replace("100x100bb", "1920x1080bb")
+            binding.albumCover.load(fullHdImageUrl) {
                 crossfade(true)
             }
-            binding.root.setOnClickListener { onItemClick(album) }
+            binding.root.setOnClickListener {
+                onItemClick(album)
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
         val binding = ItemAlbumBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
+            LayoutInflater.from(parent.context),
+            parent,
+            false
         )
         return AlbumViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
-        holder.bind(albums[position])
+        val album = getItem(position)
+        holder.bind(album)
     }
-    override fun getItemCount(): Int = albums.size
 }

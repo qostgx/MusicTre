@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -13,43 +13,45 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
 
-        <!-- TODO: use tools:scrCompat -->
         <ImageView
             android:id="@+id/albumCover"
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/ic_launcher_foreground" />
 
-        <!-- TODO: use tools:text -->
+
         <TextView
             android:id="@+id/albumTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:maxLines="2"
             android:ellipsize="end"
-            app:layout_constraintTop_toBottomOf="@id/albumCover"
-            app:layout_constraintStart_toStartOf="parent"
+            android:maxLines="2"
+            android:paddingTop="4dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            android:paddingTop="4dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/albumCover"
+            tools:text="Album Title Preview" />
 
         <TextView
             android:id="@+id/albumArtist"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="@android:color/darker_gray"
-            android:maxLines="1"
             android:ellipsize="end"
-            app:layout_constraintTop_toBottomOf="@id/albumTitle"
-            app:layout_constraintStart_toStartOf="parent"
+            android:maxLines="1"
+            android:paddingBottom="8dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:paddingBottom="8dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/albumTitle"
+            tools:text="Artist Name Preview" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

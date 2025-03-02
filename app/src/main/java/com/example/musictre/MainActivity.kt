@@ -10,22 +10,30 @@ import com.example.musictre.databinding.ActivityMainBinding
 import com.example.musictre.model.AppleResponse
 import com.example.musictre.model.Album
 import com.example.musictre.network.RetrofitInstance
+import com.example.musictre.ui.AlbumDetailActivity
 import com.example.musictre.ui.adapter.AlbumAdapter
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    // TODO: don't use lateinit in your code, better use 'by lazy' delegate
-    // TODO: https://developer.android.com/topic/libraries/view-binding
-    private lateinit var binding: ActivityMainBinding
+    private var binding: ActivityMainBinding? = null
+    private val albumAdapter: AlbumAdapter by lazy {
+        AlbumAdapter { album ->
+            val intent = Intent(this, AlbumDetailActivity::class.java)
+            intent.putExtra("album", album)
+            startActivity(intent)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.topAppBar)
+        val tempBinding = ActivityMainBinding.inflate(layoutInflater)
+        binding = tempBinding
+        setContentView(tempBinding.root)
+        setSupportActionBar(tempBinding.topAppBar)
+        tempBinding.albumRecyclerView.layoutManager = GridLayoutManager(this, 2)
+        tempBinding.albumRecyclerView.adapter = albumAdapter
 
-        binding.albumRecyclerView.layoutManager = GridLayoutManager(this, 2)
         fetchAlbums()
     }
 
@@ -33,20 +41,21 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             try {
                 val response: AppleResponse = RetrofitInstance.apiService.getTopAlbums()
-
                 val albums: List<Album> = response.feed.results
 
-                if (albums.isEmpty()) {
-                    Toast.makeText(this@MainActivity, "Список альбомов пуст!", Toast.LENGTH_SHORT).show()
-                }
-                binding.albumRecyclerView.adapter = AlbumAdapter(albums) { album ->
-                    val intent = Intent(this@MainActivity, AlbumDetailActivity::class.java)
-                    intent.putExtra("album", album)
-                    startActivity(intent)
-                }
+                albumAdapter.submitList(albums)
             } catch (e: Exception) {
-                Toast.makeText(this@MainActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@MainActivity,
+                    "Error: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 }

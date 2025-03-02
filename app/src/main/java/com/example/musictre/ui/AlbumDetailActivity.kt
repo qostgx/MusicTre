@@ -1,5 +1,4 @@
-// TODO: package name warning
-package com.example.musictre
+package com.example.musictre.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -9,13 +8,10 @@ import coil.load
 import com.example.musictre.databinding.ActivityAlbumDetailBinding
 import com.example.musictre.model.Album
 
-// TODO: press autoformat
-//  https://stackoverflow.com/questions/16580171/code-formatting-shortcuts-in-android-studio-for-operation-systems
-//  https://www.youtube.com/watch?v=HLQUtLbjW98
+
 class AlbumDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAlbumDetailBinding
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +42,5 @@ class AlbumDetailActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(album.url))
             startActivity(intent)
         }
-      }
     }
-
+}

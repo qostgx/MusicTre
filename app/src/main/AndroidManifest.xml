@@ -23,7 +23,7 @@
         </activity>
 
         <activity
-            android:name=".AlbumDetailActivity"
+            android:name=".ui.AlbumDetailActivity"
             android:exported="false" />
 
     </application>
