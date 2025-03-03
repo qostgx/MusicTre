@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
 
+        <!-- TODO: опционально, но вместо хардкода можешь использовать app:layout_constraintDimensionRatio="H,1:1" вместо этого, будет тогда по пропорции 1к1 картинку либо в какой тебе надо относительно H (высоты) -->
         <ImageView
             android:id="@+id/albumCover"
             android:layout_width="0dp"

@@ -12,11 +12,11 @@ class AlbumAdapter(
 ) : ListAdapter<Album, AlbumAdapter.AlbumViewHolder>(AlbumDiffCallback()) {
 
     inner class AlbumViewHolder(private val binding: ItemAlbumBinding) :
-        androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root) {
+        androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root) { // TODO: убери импорт, оставь только RecyclerView.ViewHolder
         fun bind(album: Album) {
             binding.albumTitle.text = album.name
             binding.albumArtist.text = album.artistName
-            val fullHdImageUrl = album.artworkUrl100.replace("100x100bb", "1920x1080bb")
+            val fullHdImageUrl = album.artworkUrl100.replace("100x100bb", "1920x1080bb") // TODO: вьюха - тупая и красивая, оператор реплейс тут не должен быть
             binding.albumCover.load(fullHdImageUrl) {
                 crossfade(true)
             }

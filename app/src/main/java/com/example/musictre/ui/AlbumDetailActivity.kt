@@ -11,7 +11,7 @@ import com.example.musictre.model.Album
 
 class AlbumDetailActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAlbumDetailBinding
+    private lateinit var binding: ActivityAlbumDetailBinding // TODO: убери лейтинит
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +26,7 @@ class AlbumDetailActivity : AppCompatActivity() {
     }
 
     private fun populateDetails(album: Album) {
-        val fullHdImageUrl = album.artworkUrl100.replace("100x100bb", "1200x1200bb")
+        val fullHdImageUrl = album.artworkUrl100.replace("100x100bb", "1200x1200bb") // TODO: вьюха - тупая и красивая, оператор реплейс тут не должен быть
 
         binding.albumCoverDetail.load(fullHdImageUrl) {
             crossfade(true)

@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         val tempBinding = ActivityMainBinding.inflate(layoutInflater)
         binding = tempBinding
         setContentView(tempBinding.root)
-        setSupportActionBar(tempBinding.topAppBar)
+        setSupportActionBar(tempBinding.topAppBar) // TODO: тут лучше убрать эту строчку и если и добавлять тулбар то из хмл
         tempBinding.albumRecyclerView.layoutManager = GridLayoutManager(this, 2)
         tempBinding.albumRecyclerView.adapter = albumAdapter
 
